@@ -42,6 +42,9 @@
     <h2 class="text-3xl font-bold text-center text-indigo-600 mb-6">
       Create Your Account
     </h2>
+  
+    <input id="name" type="text" placeholder="Full Name"
+    class="w-full mb-4 p-3 border rounded focus:ring-2 focus:ring-indigo-400">
 
     <input id="email" type="email" placeholder="Email"
       class="w-full mb-4 p-3 border rounded focus:ring-2 focus:ring-indigo-400">
@@ -62,10 +65,14 @@
   </div>
 </section>
 
-<!-- FIREBASE AUTH -->
+<!-- FIREBASE AUTH -->  
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+  import { 
+    getAuth, 
+    createUserWithEmailAndPassword,
+    updateProfile 
+  } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
   const firebaseConfig = {
    apiKey: "AIzaSyDJZf0H3YN9XoDDvIFOMtCo-FubyuGlHyA",
@@ -76,13 +83,22 @@
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
-  document.getElementById("signupBtn").onclick = () => {
+  document.getElementById("signupBtn").onclick = async () => {
+    const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(() => window.location.href = "dashboard.html")
-      .catch(err => alert(err.message));
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+
+      await updateProfile(userCredential.user, {
+        displayName: name
+      });
+
+      window.location.href = "dashboard.html";
+    } catch (err) {
+      alert(err.message);
+    }
   };
 </script>
 
