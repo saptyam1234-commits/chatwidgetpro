@@ -48,6 +48,12 @@
 
     <input id="password" type="password" placeholder="Password"
       class="w-full mb-4 p-3 border rounded focus:ring-2 focus:ring-indigo-400">
+  
+    <p class="text-right mb-4">
+    <a href="#" id="forgotPassword" class="text-indigo-600 text-sm font-semibold">
+    Forgot Password?
+    </a>
+    </p>
 
     <button id="loginBtn"
       class="w-full bg-indigo-600 text-white font-bold py-3 rounded hover:bg-indigo-700">
@@ -67,17 +73,21 @@
 <!-- FIREBASE AUTH -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+  import { 
+    getAuth, 
+    signInWithEmailAndPassword,
+    sendPasswordResetEmail
+  } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
   const firebaseConfig = {
   apiKey: "AIzaSyDJZf0H3YN9XoDDvIFOMtCo-FubyuGlHyA",
   authDomain: "konrk-88f13.firebaseapp.com",
   projectId: "konrk-88f13",
   };
-
-  const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
+  // LOGIN
   document.getElementById("loginBtn").onclick = () => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
@@ -86,7 +96,22 @@
       .then(() => window.location.href = "dashboard.html")
       .catch(err => alert(err.message));
   };
+
+  // FORGOT PASSWORD
+  document.getElementById("forgotPassword").onclick = () => {
+    const email = document.getElementById("email").value;
+
+    if (!email) {
+      alert("Please enter your email first");
+      return;
+    }
+
+    sendPasswordResetEmail(auth, email)
+      .then(() => alert("Password reset link sent to your email 📩"))
+      .catch(err => alert(err.message));
+  };
 </script>
+  
 
 </body>
 </html>
