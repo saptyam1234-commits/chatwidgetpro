@@ -7,6 +7,12 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Razorpay -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+  <!-- Stripe -->
+  <script src="https://js.stripe.com/v3/"></script>
 </head>
 
 <body class="bg-gray-50 font-roboto">
@@ -24,7 +30,7 @@
   </div>
 </header>
 
-<!-- PRICING SECTION -->
+<!-- PRICING -->
 <section class="container mx-auto py-16 px-6">
   <h1 class="text-4xl font-bold text-center text-gray-800 mb-4">
     Simple, Transparent Pricing
@@ -35,69 +41,68 @@
 
   <div class="grid md:grid-cols-3 gap-8">
 
-    <!-- FREE PLAN -->
+    <!-- FREE -->
     <div class="bg-white rounded-xl shadow-lg p-8 text-center">
-      <h2 class="text-2xl font-bold mb-2">Free</h2>
-      <p class="text-gray-600 mb-4">For testing & small sites</p>
-      <p class="text-4xl font-bold mb-6">₹0</p>
+  <h2 class="text-2xl font-bold mb-2">Free</h2>
+  <p class="text-gray-600 mb-4">For testing & small sites</p>
+  <p class="text-4xl font-bold mb-6">₹0</p>
 
-      <ul class="text-gray-600 space-y-2 mb-6">
-        <li>✔ 100 messages / month</li>
-        <li>✔ Basic chatbot</li>
-        <li>✔ Widget branding</li>
-      </ul>
+  <ul class="text-gray-600 space-y-2 mb-6">
+    <li>✔ 100 messages / month</li>
+    <li>✔ Basic chatbot</li>
+    <li>✔ Widget branding</li>
+  </ul>
 
-      <button disabled
-        class="w-full bg-gray-300 text-gray-600 font-bold py-3 rounded cursor-not-allowed">
-        Current Plan
-      </button>
-    </div>
+  <button disabled
+    class="w-full bg-gray-300 text-gray-600 font-bold py-3 rounded cursor-not-allowed">
+    Current Plan
+  </button>
+</div>
 
-    <!-- BASIC PLAN -->
+
+    <!-- BASIC -->
     <div class="bg-white rounded-xl shadow-lg p-8 text-center border-2 border-indigo-600">
-      <h2 class="text-2xl font-bold mb-2 text-indigo-600">Basic</h2>
-      <p class="text-gray-600 mb-4">Best for growing websites</p>
-      <p class="text-4xl font-bold mb-6">₹999<span class="text-lg">/mo</span></p>
+  <h2 class="text-2xl font-bold mb-2 text-indigo-600">Basic</h2>
+  <p class="text-gray-600 mb-4">Best for growing websites</p>
+  <p class="text-4xl font-bold mb-6">₹999<span class="text-lg">/mo</span></p>
 
-      <ul class="text-gray-600 space-y-2 mb-6">
-        <li>✔ 5,000 messages / month</li>
-        <li>✔ No branding</li>
-        <li>✔ Email support</li>
-      </ul>
+  <ul class="text-gray-600 space-y-2 mb-6">
+    <li>✔ 5,000 messages / month</li>
+    <li>✔ No branding</li>
+    <li>✔ Email support</li>
+  </ul>
 
-      <button onclick="subscribe('basic')"
-        class="w-full bg-indigo-600 text-white font-bold py-3 rounded hover:bg-indigo-700">
-        Buy Basic
-      </button>
-    </div>
+  <button onclick="subscribe('basic')"
+    class="w-full bg-indigo-600 text-white font-bold py-3 rounded hover:bg-indigo-700">
+    Buy Basic
+  </button>
+</div>
 
-    <!-- PRO PLAN -->
-    <div class="bg-white rounded-xl shadow-lg p-8 text-center">
-      <h2 class="text-2xl font-bold mb-2">Pro</h2>
-      <p class="text-gray-600 mb-4">For businesses & startups</p>
-      <p class="text-4xl font-bold mb-6">₹2999<span class="text-lg">/mo</span></p>
+    <!-- PRO -->
+   <div class="bg-white rounded-xl shadow-lg p-8 text-center">
+  <h2 class="text-2xl font-bold mb-2">Pro</h2>
+  <p class="text-gray-600 mb-4">For businesses & startups</p>
+  <p class="text-4xl font-bold mb-6">₹2999<span class="text-lg">/mo</span></p>
 
-      <ul class="text-gray-600 space-y-2 mb-6">
-        <li>✔ 20,000 messages / month</li>
-        <li>✔ Priority support</li>
-        <li>✔ Advanced analytics</li>
-      </ul>
+  <ul class="text-gray-600 space-y-2 mb-6">
+    <li>✔ 20,000 messages / month</li>
+    <li>✔ Priority support</li>
+    <li>✔ Advanced analytics</li>
+  </ul>
 
-      <button onclick="subscribe('pro')"
-        class="w-full bg-green-600 text-white font-bold py-3 rounded hover:bg-green-700">
-        Buy Pro
-      </button>
-    </div>
+  <button onclick="subscribe('pro')"
+    class="w-full bg-green-600 text-white font-bold py-3 rounded hover:bg-green-700">
+    Buy Pro
+  </button>
+</div>
 
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="bg-indigo-600 text-white py-16 text-center">
+  <section class="bg-indigo-600 text-white py-16 text-center">
   <h2 class="text-3xl font-bold mb-4">
     Need a Custom or Enterprise Plan?
   </h2>
-  <p class="mb-6">Unlimited messages, custom features & dedicated support</p>
+  <p class="mb-6">
+    Unlimited messages, custom features & dedicated support
+  </p>
   <a href="mailto:support@chatwidgetpro.com"
      class="bg-yellow-400 text-indigo-900 font-bold px-8 py-3 rounded hover:bg-yellow-500">
     Contact Sales
@@ -105,23 +110,82 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-gray-800 text-white py-6">
-  <div class="container mx-auto text-center">
-    <p>&copy; 2026 ChatWidgetPro. All rights reserved.</p>
-  </div>
+<footer class="bg-gray-800 text-white py-6 text-center">
+  &copy; 2026 ChatWidgetPro
 </footer>
 
-<!-- FRONTEND PAYMENT HOOK -->
+<!-- PAYMENT LOGIC -->
 <script>
-  function subscribe(plan) {
-    // abhi sirf frontend demo
-    alert("You selected plan: " + plan +
-          "\n\nNext step: Payment gateway integration (Stripe/Razorpay)");
-    
-    // future:
-    // window.location.href = `/checkout?plan=${plan}`;
+/* =============================
+   CONFIG
+============================= */
+const PAYMENT_GATEWAY = "razorpay"; 
+// "razorpay" OR "stripe"
+
+/* Razorpay Key ID (TEST) */
+const RAZORPAY_KEY = "rzp_test_XXXXXXXXXX";
+
+/* Stripe Publishable Key (TEST) */
+const STRIPE_KEY = "pk_test_XXXXXXXXXXXX";
+
+/* Stripe Init */
+const stripe = Stripe(STRIPE_KEY);
+
+/* =============================
+   SUBSCRIBE
+============================= */
+function subscribe(plan) {
+
+  if (PAYMENT_GATEWAY === "razorpay") {
+    razorpayCheckout(plan);
+  } else {
+    stripeCheckout(plan);
   }
+}
+
+/* =============================
+   RAZORPAY
+============================= */
+function razorpayCheckout(plan) {
+
+  let amount = plan === "basic" ? 99900 : 299900;
+
+  const options = {
+    key: RAZORPAY_KEY,
+    amount: amount,
+    currency: "INR",
+    name: "ChatWidgetPro",
+    description: plan.toUpperCase() + " Plan",
+    handler: function (response) {
+      alert("Payment Successful\nPayment ID: " + response.razorpay_payment_id);
+
+      // TODO: backend verify
+      // fetch("/verify-razorpay", {...})
+    },
+    theme: { color: "#4f46e5" }
+  };
+
+  new Razorpay(options).open();
+}
+
+/* =============================
+   STRIPE
+============================= */
+function stripeCheckout(plan) {
+
+  fetch("/create-stripe-session", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ plan })
+  })
+  .then(res => res.json())
+  .then(data => {
+    stripe.redirectToCheckout({ sessionId: data.id });
+  });
+}
 </script>
 
 </body>
 </html>
+
+  
