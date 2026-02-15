@@ -2,7 +2,7 @@
 
   // 🔹 fallback for CodePen
   const scriptTag = document.currentScript || document.querySelector("script[data-key]");
-  const apiKey = scriptTag?.dataset.key || "test_key";
+  const apiKey = scriptTag?https://backend-cyvm.onrender.com|| "test_key";
 
   /* ---------- CHAT BUTTON ---------- */
   const btn = document.createElement("button");
