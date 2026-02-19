@@ -225,16 +225,25 @@
     signOut(auth).then(()=>location.href="login.html");
 
   window.generateKey = () => {
-    const key = "api_" + Math.random().toString(36).substring(2,18);
-    apiKey.value = key;
-    widgetCode.value =
-`<script src="https://backend-cyvm.onrender.com/widget.js" data-key="${key}"></script>`;
-  };
+  const key = "api_" + Math.random().toString(36).substring(2,18);
 
-  window.copyCode = () => {
-    navigator.clipboard.writeText(widgetCode.value);
-    alert("Copied ✅");
-  };
+  // DOM elements ko explicitly select karo
+  const apiInput = document.getElementById("apiKey");
+  const widgetTextarea = document.getElementById("widgetCode");
+
+  apiInput.value = key;
+
+  widgetTextarea.value =
+`<script src="https://backend-cyvm.onrender.com/widget.js" data-key="${key}"></script>`;
+};
+
+window.copyCode = () => {
+  const widgetTextarea = document.getElementById("widgetCode");
+  navigator.clipboard.writeText(widgetTextarea.value);
+  alert("Copied ✅");
+};
+
+  
 </script>
 <script>
 /* ===============================
