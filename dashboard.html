@@ -233,9 +233,8 @@
 
   apiInput.value = key;
 
-  widgetTextarea.value =
-`<script src="https://backend-cyvm.onrender.com/widget.js" data-key="${key}"></script>`;
-};
+widgetTextarea.value =
+`<script src="https://backend-cyvm.onrender.com/api/widget" data-key="${key}"></script>`;
 
 window.copyCode = () => {
   const widgetTextarea = document.getElementById("widgetCode");
