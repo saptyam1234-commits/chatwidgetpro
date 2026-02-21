@@ -217,14 +217,15 @@ const auth = getAuth(app);
 
 onAuthStateChanged(auth, (user) => {
   if (!user) location.href = "login.html";
-  document.getElementById("userEmail").innerText = user.email;
+  if (user) document.getElementById("userEmail").innerText = user.email;
 });
 
 document.getElementById("logoutBtn").onclick = () =>
   signOut(auth).then(()=>location.href="login.html");
 
 
-// ✅ GENERATE KEY
+// ================== GENERATE KEY ==================
+
 window.generateKey = () => {
 
   const key = "api_" + Math.random().toString(36).substring(2,18);
@@ -232,11 +233,13 @@ window.generateKey = () => {
   document.getElementById("apiKey").value = key;
 
   document.getElementById("widgetCode").value =
-  `<script src="https://backend-cyvm.onrender.com/api/widget" data-key="${key}"></script>`;
+    '<scr' + 'ipt src="https://backend-cyvm.onrender.com/api/widget" data-key="' 
+    + key + '"></scr' + 'ipt>';
 };
 
 
-// ✅ COPY
+// ================== COPY ==================
+
 window.copyCode = () => {
   navigator.clipboard.writeText(
     document.getElementById("widgetCode").value
@@ -245,9 +248,7 @@ window.copyCode = () => {
 };
 
 
-/* ===============================
-   BILLING SYSTEM
-================================ */
+// ================== BILLING ==================
 
 const userSubscription = {
   plan: "basic",
@@ -270,31 +271,21 @@ function initBilling() {
   document.getElementById("planExpiry").innerText =
     userSubscription.expiry;
 
-  const expiryDate = new Date(userSubscription.expiry);
+  const expiryDate = new Date(userSubscription.expiry + "T23:59:59");
   const today = new Date();
 
   const actions = document.getElementById("billingActions");
   actions.innerHTML = "";
 
   if (expiryDate < today) {
-    actions.innerHTML = `
-      <button onclick="renewPlan()"
-        class="bg-red-600 text-white px-4 py-2 rounded w-full">
-        Renew Plan
-      </button>
-    `;
+    actions.innerHTML =
+      '<button onclick="renewPlan()" class="bg-red-600 text-white px-4 py-2 rounded w-full">Renew Plan</button>';
   } else {
-    actions.innerHTML = `
-      <button onclick="renewPlan()"
-        class="bg-green-600 text-white px-4 py-2 rounded">
-        Renew
-      </button>
-      ${userSubscription.plan !== "pro" ? `
-      <button onclick="upgradePlan()"
-        class="bg-indigo-600 text-white px-4 py-2 rounded">
-        Upgrade
-      </button>` : ""}
-    `;
+    actions.innerHTML =
+      '<button onclick="renewPlan()" class="bg-green-600 text-white px-4 py-2 rounded">Renew</button>' +
+      (userSubscription.plan !== "pro"
+        ? '<button onclick="upgradePlan()" class="bg-indigo-600 text-white px-4 py-2 rounded">Upgrade</button>'
+        : '');
   }
 }
 
