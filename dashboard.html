@@ -223,18 +223,20 @@
 
   document.getElementById("logoutBtn").onclick = () =>
     signOut(auth).then(()=>location.href="login.html");
+window.generateKey = () => {
 
-  window.generateKey = () => {
   const key = "api_" + Math.random().toString(36).substring(2,18);
 
-  // DOM elements ko explicitly select karo
   const apiInput = document.getElementById("apiKey");
   const widgetTextarea = document.getElementById("widgetCode");
 
   apiInput.value = key;
 
-widgetTextarea.value =
-`<script src="https://backend-cyvm.onrender.com/api/widget" data-key="${key}"></script>`;
+  widgetTextarea.value =
+  `<script src="https://backend-cyvm.onrender.com/api/widget" data-key="${key}"></script>`;
+
+};   // ✅ generateKey properly closed here
+
 
 window.copyCode = () => {
   const widgetTextarea = document.getElementById("widgetCode");
