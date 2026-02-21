@@ -200,8 +200,6 @@
   }
   showSlide(0);
 </script>
-
-<!-- FIREBASE AUTH -->
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
@@ -231,39 +229,33 @@ window.generateKey = () => {
 
   const key = "api_" + Math.random().toString(36).substring(2,18);
 
-  const apiInput = document.getElementById("apiKey");
-  const widgetTextarea = document.getElementById("widgetCode");
+  document.getElementById("apiKey").value = key;
 
-  apiInput.value = key;
-
-  widgetTextarea.value =
+  document.getElementById("widgetCode").value =
   `<script src="https://backend-cyvm.onrender.com/api/widget" data-key="${key}"></script>`;
 };
 
 
-// ✅ COPY BUTTON
+// ✅ COPY
 window.copyCode = () => {
-  const widgetTextarea = document.getElementById("widgetCode");
-  navigator.clipboard.writeText(widgetTextarea.value);
+  navigator.clipboard.writeText(
+    document.getElementById("widgetCode").value
+  );
   alert("Copied ✅");
 };
 
-</script>   <!-- 🔥 YAHAN CLOSE KARO --> 
-<script>
-/* ===============================
-   USER BILLING DATA
-   (Backend se aayega later)
-================================ */
-const userSubscription = {
-  plan: "basic",              // free | basic | pro
-  price: 999,
-  remainingMessages: 55,
-  expiry: "2026-02-28"        // YYYY-MM-DD
-};
 
 /* ===============================
-   INIT BILLING (Dashboard Only)
+   BILLING SYSTEM
 ================================ */
+
+const userSubscription = {
+  plan: "basic",
+  price: 999,
+  remainingMessages: 55,
+  expiry: "2026-02-28"
+};
+
 function initBilling() {
 
   document.getElementById("planName").innerText =
@@ -284,7 +276,6 @@ function initBilling() {
   const actions = document.getElementById("billingActions");
   actions.innerHTML = "";
 
-  // PLAN EXPIRED
   if (expiryDate < today) {
     actions.innerHTML = `
       <button onclick="renewPlan()"
@@ -292,15 +283,12 @@ function initBilling() {
         Renew Plan
       </button>
     `;
-  }
-  // PLAN ACTIVE
-  else {
+  } else {
     actions.innerHTML = `
       <button onclick="renewPlan()"
         class="bg-green-600 text-white px-4 py-2 rounded">
         Renew
       </button>
-
       ${userSubscription.plan !== "pro" ? `
       <button onclick="upgradePlan()"
         class="bg-indigo-600 text-white px-4 py-2 rounded">
@@ -310,27 +298,19 @@ function initBilling() {
   }
 }
 
-/* ===============================
-   BUTTON ACTIONS
-================================ */
-function renewPlan() {
-  // Same plan renew
-  subscribe(userSubscription.plan);
-}
-
-function upgradePlan() {
-  // Upgrade to PRO
-  subscribe("pro");
-}
+window.renewPlan = () => subscribe(userSubscription.plan);
+window.upgradePlan = () => subscribe("pro");
 
 function capitalize(text) {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
-/* ===============================
-   LOAD ON DASHBOARD OPEN
-================================ */
+function subscribe(plan){
+  alert("Redirecting to payment for " + plan);
+}
+
 initBilling();
+
 </script>
 
 </body>
