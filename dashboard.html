@@ -203,26 +203,30 @@
 
 <!-- FIREBASE AUTH -->
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-  import { getAuth, onAuthStateChanged, signOut } 
-  from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
-  const firebaseConfig = {
-      apiKey: "AIzaSyDJZf0H3YN9XoDDvIFOMtCo-FubyuGlHyA",
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut } 
+from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDJZf0H3YN9XoDDvIFOMtCo-FubyuGlHyA",
   authDomain: "konrk-88f13.firebaseapp.com",
   projectId: "konrk-88f13",
-  };
-  
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
+};
 
-  onAuthStateChanged(auth, (user) => {
-    if (!user) location.href = "login.html";
-    document.getElementById("userEmail").innerText = user.email;
-  });
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
-  document.getElementById("logoutBtn").onclick = () =>
-    signOut(auth).then(()=>location.href="login.html");
+onAuthStateChanged(auth, (user) => {
+  if (!user) location.href = "login.html";
+  document.getElementById("userEmail").innerText = user.email;
+});
+
+document.getElementById("logoutBtn").onclick = () =>
+  signOut(auth).then(()=>location.href="login.html");
+
+
+// ✅ GENERATE KEY
 window.generateKey = () => {
 
   const key = "api_" + Math.random().toString(36).substring(2,18);
@@ -234,19 +238,17 @@ window.generateKey = () => {
 
   widgetTextarea.value =
   `<script src="https://backend-cyvm.onrender.com/api/widget" data-key="${key}"></script>`;
+};
 
-};   // ✅ generateKey properly closed here
 
-
+// ✅ COPY BUTTON
 window.copyCode = () => {
   const widgetTextarea = document.getElementById("widgetCode");
   navigator.clipboard.writeText(widgetTextarea.value);
   alert("Copied ✅");
 };
 
-  
 </script>
-<script>
 /* ===============================
    USER BILLING DATA
    (Backend se aayega later)
