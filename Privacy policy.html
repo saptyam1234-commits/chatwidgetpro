@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy | ChatWidgetPro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --red: #e11d48; --red-dark: #9f1239;
+      --red-glow: rgba(225,29,72,0.3);
+      --black: #050505; --black-card: #111;
+      --border: rgba(225,29,72,0.15);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Outfit', sans-serif; background: var(--black); color: #f0f0f0; overflow-x: hidden; min-height: 100vh; display: flex; flex-direction: column; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 1000; opacity: 0.5; }
+    ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: var(--black); } ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 99px; }
+
+    header { position: sticky; top: 0; z-index: 500; background: rgba(5,5,5,0.88); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 18px 32px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 2px; color: #fff; text-decoration: none; }
+    .logo span { color: var(--red); }
+    nav a { color: #888; font-size: 0.88rem; font-weight: 500; text-decoration: none; margin-left: 32px; transition: color 0.2s; }
+    nav a:hover { color: #fff; }
+    .nav-cta { background: var(--red) !important; color: #fff !important; padding: 9px 22px; border-radius: 8px; font-weight: 600; box-shadow: 0 0 18px var(--red-glow); }
+    .nav-cta:hover { background: var(--red-dark) !important; transform: translateY(-1px) !important; }
+
+    main { flex: 1; position: relative; z-index: 2; }
+
+    .page-hero { padding: 80px 32px 60px; text-align: center; position: relative; overflow: hidden; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(225,29,72,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(225,29,72,0.04) 1px,transparent 1px); background-size: 60px 60px; }
+    .page-hero::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 300px; background: radial-gradient(ellipse,rgba(225,29,72,0.08) 0%,transparent 65%); }
+    .hero-label { display: inline-flex; align-items: center; gap: 8px; background: rgba(225,29,72,0.1); border: 1px solid rgba(225,29,72,0.25); color: #f87171; font-size: 0.7rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 16px; border-radius: 99px; margin-bottom: 20px; position: relative; z-index: 2; }
+    .page-hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem,5vw,4rem); color: #fff; letter-spacing: 1px; margin-bottom: 12px; position: relative; z-index: 2; }
+    .page-hero p { color: #4b5563; font-size: 0.9rem; font-weight: 300; position: relative; z-index: 2; }
+
+    .policy-body { max-width: 800px; margin: 0 auto; padding: 20px 32px 100px; }
+    .policy-card { background: var(--black-card); border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 48px 52px; position: relative; overflow: hidden; }
+    .policy-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg,transparent,var(--red),transparent); }
+
+    .policy-section { margin-bottom: 40px; }
+    .policy-section:last-child { margin-bottom: 0; }
+    .policy-section h2 { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 1px; color: #fff; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+    .policy-section h2::before { content: ''; width: 3px; height: 1.2rem; background: var(--red); border-radius: 2px; display: block; }
+    .policy-section p, .policy-section li { color: #6b7280; font-size: 0.9rem; line-height: 1.85; font-weight: 300; }
+    .policy-section ul { padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .policy-section ul li { display: flex; gap: 10px; }
+    .policy-section ul li::before { content: '→'; color: var(--red); font-size: 0.8rem; flex-shrink: 0; margin-top: 2px; }
+    .policy-divider { height: 1px; background: rgba(255,255,255,0.05); margin: 36px 0; }
+
+    .contact-box { background: rgba(225,29,72,0.06); border: 1px solid rgba(225,29,72,0.2); border-radius: 12px; padding: 20px 24px; margin-top: 16px; }
+    .contact-box a { color: var(--red); text-decoration: none; font-weight: 500; }
+    .contact-box a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) { .policy-card { padding: 32px 24px; } nav a:not(.nav-cta) { display: none; } .nav-inner { padding: 16px 20px; } .policy-body { padding: 20px 16px 60px; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Chat<span>Widget</span>Pro</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="login.html">Login</a>
+      <a href="signup.html" class="nav-cta">Get Started</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="page-hero">
+    <div class="hero-label">Legal</div>
+    <h1>Privacy Policy</h1>
+    <p>Last updated: January 1, 2026</p>
+  </div>
+
+  <div class="policy-body">
+    <div class="policy-card">
+
+      <div class="policy-section">
+        <h2>1. Information We Collect</h2>
+        <p>We collect information you provide directly to us when you create an account, subscribe to a plan, or contact us for support. This includes:</p>
+        <ul>
+          <li>Name and email address</li>
+          <li>Payment information (processed securely via Razorpay/Stripe)</li>
+          <li>Business name and website URL</li>
+          <li>Chat logs and widget usage data</li>
+        </ul>
+      </div>
+
+      <div class="policy-divider"></div>
+
+      <div class="policy-section">
+        <h2>2. How We Use Your Information</h2>
+        <ul>
+          <li>To provide, maintain, and improve our services</li>
+          <li>To process payments and manage your subscription</li>
+          <li>To send transactional emails and service updates</li>
+          <li>To respond to your support requests</li>
+          <li>To monitor usage and prevent fraud or abuse</li>
+        </ul>
+      </div>
+
+      <div class="policy-divider"></div>
+
+      <div class="policy-section">
+        <h2>3. Data Sharing</h2>
+        <p>We do not sell, trade, or rent your personal information to third parties. We may share data with trusted service providers (e.g., Firebase, Razorpay, Stripe) solely to operate our platform, under strict confidentiality agreements.</p>
+      </div>
+
+      <div class="policy-divider"></div>
+
+      <div class="policy-section">
+        <h2>4. Cookies</h2>
+        <p>We use cookies and similar tracking technologies to maintain sessions, remember your preferences, and analyze platform usage. You may disable cookies in your browser settings, though some features may not function correctly.</p>
+      </div>
+
+      <div class="policy-divider"></div>
+
+      <div class="policy-section">
+        <h2>5. Data Security</h2>
+        <p>We implement industry-standard security measures including SSL encryption, Firebase security rules, and secure payment gateways. However, no method of transmission over the internet is 100% secure.</p>
+      </div>
+
+      <div class="policy-divider"></div>
+
+      <div class="policy-section">
+        <h2>6. Your Rights</h2>
+        <ul>
+          <li>Access and update your personal data from your dashboard</li>
+          <li>Request deletion of your account and associated data</li>
+          <li>Opt out of marketing communications at any time</li>
+        </ul>
+      </div>
+
+      <div class="policy-divider"></div>
+
+      <div class="policy-section">
+        <h2>7. Contact Us</h2>
+        <p>For any privacy-related questions or requests:</p>
+        <div class="contact-box">
+          <p>📧 <a href="mailto:support@chatwidgetpro.com">support@chatwidgetpro.com</a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER FRAGMENT -->
+<style>
+  .cwp-footer { background: #050505; border-top: 1px solid rgba(225,29,72,0.15); padding: 64px 32px 32px; font-family: 'Outfit', sans-serif; position: relative; overflow: hidden; z-index: 2; }
+  .cwp-footer::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 600px; height: 1px; background: linear-gradient(90deg,transparent,rgba(225,29,72,0.5),transparent); }
+  .cwp-footer-inner { max-width: 1100px; margin: 0 auto; }
+  .cwp-footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 32px; }
+  .cwp-footer-brand .brand-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.7rem; letter-spacing: 2px; color: #fff; text-decoration: none; display: block; margin-bottom: 12px; }
+  .cwp-footer-brand .brand-logo span { color: #e11d48; }
+  .cwp-footer-brand p { color: #374151; font-size: 0.83rem; font-weight: 300; line-height: 1.7; max-width: 220px; margin-bottom: 20px; }
+  .cwp-footer-brand .brand-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(225,29,72,0.08); border: 1px solid rgba(225,29,72,0.2); border-radius: 99px; padding: 4px 12px; font-size: 0.68rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: #f87171; }
+  .cwp-footer-brand .brand-badge::before { content: ''; width: 5px; height: 5px; background: #e11d48; border-radius: 50%; animation: cwp-blink 1.4s infinite; }
+  @keyframes cwp-blink { 0%,100%{opacity:1}50%{opacity:0.15} }
+  .cwp-footer-col h4 { font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #4b5563; margin-bottom: 18px; }
+  .cwp-footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .cwp-footer-col ul li a { color: #4b5563; font-size: 0.85rem; text-decoration: none; transition: color 0.2s, padding-left 0.2s; display: inline-block; }
+  .cwp-footer-col ul li a:hover { color: #e11d48; padding-left: 4px; }
+  .cwp-footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .cwp-footer-copy { color: #1f2937; font-size: 0.78rem; font-weight: 300; }
+  .cwp-footer-copy span { color: #e11d48; }
+  .cwp-footer-policy { display: flex; gap: 24px; }
+  .cwp-footer-policy a { color: #1f2937; font-size: 0.78rem; text-decoration: none; transition: color 0.2s; }
+  .cwp-footer-policy a:hover { color: #e11d48; }
+  @media(max-width:900px){ .cwp-footer-top{grid-template-columns:1fr 1fr;gap:32px} }
+  @media(max-width:560px){ .cwp-footer-top{grid-template-columns:1fr;gap:28px} .cwp-footer-bottom{flex-direction:column;text-align:center} .cwp-footer-policy{flex-wrap:wrap;justify-content:center;gap:16px} .cwp-footer{padding:48px 20px 28px} }
+</style>
+<footer class="cwp-footer">
+  <div class="cwp-footer-inner">
+    <div class="cwp-footer-top">
+      <div class="cwp-footer-brand">
+        <a href="index.html" class="brand-logo">Chat<span>Widget</span>Pro</a>
+        <p>AI-powered chatbot widget for websites. Setup in 5 minutes, manage from one dashboard.</p>
+        <div class="brand-badge">AI Powered</div>
+      </div>
+      <div class="cwp-footer-col"><h4>Product</h4><ul><li><a href="index.html">Home</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="dashboard.html">Dashboard</a></li><li><a href="signup.html">Get Started</a></li></ul></div>
+      <div class="cwp-footer-col"><h4>Legal</h4><ul><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="terms.html">Terms & Conditions</a></li><li><a href="refund-policy.html">Refund Policy</a></li></ul></div>
+      <div class="cwp-footer-col"><h4>Support</h4><ul><li><a href="contact.html">Contact Us</a></li><li><a href="mailto:support@chatwidgetpro.com">Email Support</a></li><li><a href="login.html">Login</a></li></ul></div>
+    </div>
+    <div class="cwp-footer-bottom">
+      <p class="cwp-footer-copy">© 2026 <span>ChatWidgetPro</span>. All rights reserved.</p>
+      <div class="cwp-footer-policy"><a href="privacy-policy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund-policy.html">Refund</a><a href="contact.html">Contact</a></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
