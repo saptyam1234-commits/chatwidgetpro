@@ -80,9 +80,6 @@
   } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
   const firebaseConfig = {
-  apiKey: "AIzaSyDJZf0H3YN9XoDDvIFOMtCo-FubyuGlHyA",
-  authDomain: "konrk-88f13.firebaseapp.com",
-  projectId: "konrk-88f13",
   };
 const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
@@ -112,6 +109,245 @@ const app = initializeApp(firebaseConfig);
   };
 </script>
   
+<!--
+  ╔══════════════════════════════════════════════════════════╗
+  ║  ChatWidgetPro — Reusable Footer Fragment                ║
+  ║  Paste this block in every page BEFORE </body>          ║
+  ║  Replace existing <footer>...</footer> with this        ║
+  ╚══════════════════════════════════════════════════════════╝
+-->
 
+<style>
+  /* ── GLOBAL FOOTER STYLES ── */
+  .cwp-footer {
+    background: #050505;
+    border-top: 1px solid rgba(225, 29, 72, 0.15);
+    padding: 64px 32px 32px;
+    font-family: 'Outfit', sans-serif;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+  }
+
+  /* subtle top glow */
+  .cwp-footer::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(225,29,72,0.5), transparent);
+  }
+
+  .cwp-footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* top row */
+  .cwp-footer-top {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    margin-bottom: 32px;
+  }
+
+  /* brand col */
+  .cwp-footer-brand .brand-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.7rem;
+    letter-spacing: 2px;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .cwp-footer-brand .brand-logo span { color: #e11d48; }
+
+  .cwp-footer-brand p {
+    color: #374151;
+    font-size: 0.83rem;
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 220px;
+    margin-bottom: 20px;
+  }
+
+  .cwp-footer-brand .brand-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(225,29,72,0.08);
+    border: 1px solid rgba(225,29,72,0.2);
+    border-radius: 99px;
+    padding: 4px 12px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #f87171;
+  }
+
+  .cwp-footer-brand .brand-badge::before {
+    content: '';
+    width: 5px; height: 5px;
+    background: #e11d48;
+    border-radius: 50%;
+    animation: cwp-blink 1.4s infinite;
+  }
+
+  @keyframes cwp-blink {
+    0%, 100% { opacity: 1; } 50% { opacity: 0.15; }
+  }
+
+  /* link columns */
+  .cwp-footer-col h4 {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #4b5563;
+    margin-bottom: 18px;
+  }
+
+  .cwp-footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cwp-footer-col ul li a {
+    color: #4b5563;
+    font-size: 0.85rem;
+    font-weight: 400;
+    text-decoration: none;
+    transition: color 0.2s, padding-left 0.2s;
+    display: inline-block;
+  }
+
+  .cwp-footer-col ul li a:hover {
+    color: #e11d48;
+    padding-left: 4px;
+  }
+
+  /* bottom row */
+  .cwp-footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .cwp-footer-copy {
+    color: #1f2937;
+    font-size: 0.78rem;
+    font-weight: 300;
+    letter-spacing: 0.3px;
+  }
+
+  .cwp-footer-copy span { color: #e11d48; }
+
+  .cwp-footer-policy {
+    display: flex;
+    gap: 24px;
+  }
+
+  .cwp-footer-policy a {
+    color: #1f2937;
+    font-size: 0.78rem;
+    text-decoration: none;
+    transition: color 0.2s;
+    letter-spacing: 0.3px;
+  }
+
+  .cwp-footer-policy a:hover { color: #e11d48; }
+
+  /* responsive */
+  @media (max-width: 900px) {
+    .cwp-footer-top {
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .cwp-footer-top {
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+    .cwp-footer-bottom {
+      flex-direction: column;
+      text-align: center;
+    }
+    .cwp-footer-policy { flex-wrap: wrap; justify-content: center; gap: 16px; }
+    .cwp-footer { padding: 48px 20px 28px; }
+  }
+</style>
+
+<footer class="cwp-footer">
+  <div class="cwp-footer-inner">
+
+    <!-- TOP: Brand + 3 link columns -->
+    <div class="cwp-footer-top">
+
+      <!-- Brand -->
+      <div class="cwp-footer-brand">
+        <a href="index.html" class="brand-logo">Chat<span>Widget</span>Pro</a>
+        <p>AI-powered chatbot widget for websites. Setup in 5 minutes, manage from one dashboard.</p>
+        <div class="brand-badge">AI Powered</div>
+      </div>
+
+      <!-- Product -->
+      <div class="cwp-footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+          <li><a href="signup.html">Get Started</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div class="cwp-footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms & Conditions</a></li>
+          <li><a href="refund-policy.html">Refund Policy</a></li>
+        </ul>
+      </div>
+
+      <!-- Support -->
+      <div class="cwp-footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="mailto:support@chatwidgetpro.com">Email Support</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- BOTTOM: copyright + quick policy links -->
+    <div class="cwp-footer-bottom">
+      <p class="cwp-footer-copy">© 2026 <span>ChatWidgetPro</span>. All rights reserved.</p>
+      <div class="cwp-footer-policy">
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="refund-policy.html">Refund</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+
+  </div>
+</footer> 
+  
 </body>
 </html>
